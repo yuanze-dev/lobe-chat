@@ -49,7 +49,7 @@ export class LobeAnthropicAI implements LobeRuntimeAI {
 
     this.client = new Anthropic({ authToken: apiKey, baseURL, ...res });
     this.baseURL = this.client.baseURL;
-    this.apiKey = apiKey;
+    // this.apiKey = apiKey;
     this.id = id || ModelProvider.Anthropic;
   }
 
