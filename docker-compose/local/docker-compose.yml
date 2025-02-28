@@ -11,7 +11,7 @@ services:
       - lobe-network
 
   postgresql:
-    image: pgvector/pgvector:pg17
+    image: pgvector/pgvector:pg16
     container_name: lobe-postgres
     ports:
       - '5432:5432'
@@ -43,7 +43,7 @@ services:
       - .env
 
   lobe:
-    image: baigua-lobe:1.51.1 
+    image: baigua-lobe:1.53.12
     container_name: lobe-chat
     network_mode: 'service:network-service'
     depends_on:
@@ -54,9 +54,6 @@ services:
     environment:
       - 'DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgresql:5432/${LOBE_DB_NAME}'
       - 'S3_ENABLE_PATH_STYLE=1'
-      - 'S3_ACCESS_KEY=${MINIO_ROOT_USER}'
-      - 'S3_ACCESS_KEY_ID=${MINIO_ROOT_USER}'
-      - 'S3_SECRET_ACCESS_KEY=${MINIO_ROOT_PASSWORD}'
       - 'LLM_VISION_IMAGE_USE_BASE64=1'
       - 'S3_SET_ACL=0'
       - 'SEARXNG_URL=http://searxng:8080'
