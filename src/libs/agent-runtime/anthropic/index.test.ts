@@ -45,6 +45,15 @@ describe('LobeAnthropicAI', () => {
       expect(instance).toBeInstanceOf(LobeAnthropicAI);
       expect(instance.baseURL).toBe('https://api.anthropic.proxy');
     });
+
+    it('should correctly initialize with different id', async () => {
+      const instance = new LobeAnthropicAI({
+        apiKey: 'test_api_key',
+        id: 'abc',
+      });
+      expect(instance).toBeInstanceOf(LobeAnthropicAI);
+      expect(instance['id']).toBe('abc');
+    });
   });
 
   describe('chat', () => {
@@ -348,7 +357,7 @@ describe('LobeAnthropicAI', () => {
           // Assert
           expect(e).toEqual({
             endpoint: 'https://api.anthropic.com',
-            error: apiError,
+            error: apiError.error.error,
             errorType: bizErrorType,
             provider,
           });
