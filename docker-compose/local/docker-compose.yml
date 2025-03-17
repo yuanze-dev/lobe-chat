@@ -43,7 +43,7 @@ services:
       - .env
 
   lobe:
-    image: baigua-lobe:1.66.2
+    image: baigua-lobe:1.70.0
     container_name: lobe-chat
     network_mode: 'service:network-service'
     depends_on:
