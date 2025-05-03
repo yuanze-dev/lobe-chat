@@ -44,8 +44,16 @@ export interface ModelTokensUsage {
   totalTokens?: number;
 }
 
+export interface ModelSpeed {
+  // tokens per second
+  tps?: number;
+  // time to fist token
+  ttft?: number;
+}
+
 export interface MessageMetadata extends ModelTokensUsage {
   tps?: number;
+  ttft?: number;
 }
 
 export type MessageRoleType = 'user' | 'system' | 'assistant' | 'tool';
@@ -116,4 +124,11 @@ export interface UpdateMessageParams {
   search?: GroundingSearch;
   toolCalls?: MessageToolCall[];
   tools?: ChatToolPayload[] | null;
+}
+
+export interface NewMessageQueryParams {
+  embeddingsId: string;
+  messageId: string;
+  rewriteQuery: string;
+  userQuery: string;
 }
