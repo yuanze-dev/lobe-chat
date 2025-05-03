@@ -53,9 +53,6 @@ services:
         condition: service_started
     environment:
       - 'DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgresql:5432/${LOBE_DB_NAME}'
-      - 'S3_ENABLE_PATH_STYLE=1'
-      - 'LLM_VISION_IMAGE_USE_BASE64=1'
-      - 'S3_SET_ACL=0'
       - 'SEARXNG_URL=http://searxng:8080'
     env_file:
       - .env
